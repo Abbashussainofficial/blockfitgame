@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shown before Flutter's first frame: the splash background colour, so the
+     app never flashes white before the in-app splash screen. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/splash_background" />
+</layer-list>

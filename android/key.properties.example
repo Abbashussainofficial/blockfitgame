@@ -1,0 +1,17 @@
+# Release signing for Block Fit.
+#
+# 1. Copy this file to android/key.properties (same folder). key.properties is
+#    git-ignored: NEVER commit it or the keystore, and back both up safely.
+#    Losing the upload key means asking Google Play support to reset it.
+# 2. Create an upload keystore once (run from the project root):
+#
+#      keytool -genkey -v -keystore ~/blockfit-upload.jks -keyalg RSA \
+#        -keysize 2048 -validity 10000 -alias upload
+#
+# 3. Fill in the values below. storeFile may be absolute or relative to
+#    android/app/.
+
+storePassword=CHANGE_ME
+keyPassword=CHANGE_ME
+keyAlias=upload
+storeFile=/Users/apple/blockfit-upload.jks

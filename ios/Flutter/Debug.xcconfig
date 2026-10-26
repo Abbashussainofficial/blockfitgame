@@ -1,0 +1,7 @@
+#include "Generated.xcconfig"
+
+// TEMPORARY workaround for Xcode 16.2 on macOS 26: its asset catalog compiler
+// can't start AssetCatalogSimulatorAgent, so skip the app icon / launch image
+// catalog in DEBUG SIMULATOR builds only (release and device builds keep it).
+// Remove after updating Xcode.
+EXCLUDED_SOURCE_FILE_NAMES[sdk=iphonesimulator*] = Assets.xcassets

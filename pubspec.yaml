@@ -1,0 +1,56 @@
+name: block_fit
+description: "Block Fit - a relaxing block puzzle game by Adivantech (Pvt) Ltd."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.7
+
+dependencies:
+  audioplayers: ^6.8.1
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^3.4.3
+  google_mobile_ads: ^9.2.0
+  in_app_purchase: ^3.3.1
+  shared_preferences: ^2.5.6
+  url_launcher: ^6.3.3
+
+# TEMPORARY (local iOS simulator / macOS preview only): in_app_purchase_storekit
+# 0.4.12+ uses a StoreKit API from the iOS 18.4 SDK (Xcode 16.3+); this Mac
+# has Xcode 16.2. Remove this override after updating Xcode. It does not affect
+# the Android build.
+dependency_overrides:
+  in_app_purchase_storekit: 0.4.11+2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    # Placeholder sound effects; regenerate with tools/generate_sounds.py or
+    # replace with your own files of the same names.
+    - assets/sounds/
+
+  fonts:
+    # Nunito (Google Fonts, SIL OFL 1.1 - see assets/fonts/OFL.txt), bundled
+    # so text renders identically offline.
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/Nunito-400.ttf
+          weight: 400
+        - asset: assets/fonts/Nunito-600.ttf
+          weight: 600
+        - asset: assets/fonts/Nunito-700.ttf
+          weight: 700
+        - asset: assets/fonts/Nunito-800.ttf
+          weight: 800
+        - asset: assets/fonts/Nunito-900.ttf
+          weight: 900
