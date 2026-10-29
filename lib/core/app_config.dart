@@ -7,10 +7,10 @@ abstract final class AppConfig {
 
   static const String contactEmail = 'contact@adivantech.com';
 
-  /// TODO(release): host store/privacy_policy.md (Phase 7) and put its public
-  /// URL here. Google Play requires a reachable privacy policy URL.
+  /// Public copy of store/privacy_policy.md. The same URL goes in Play
+  /// Console and the AdMob consent message.
   static const String privacyPolicyUrl =
-      'https://adivantech.com/blockfit/privacy-policy';
+      'https://adivantech.com/privacypolicy-blockfit';
 
   /// Opens the Play Store app directly; falls back to the web listing.
   static const String playStoreMarketUrl = 'market://details?id=$packageName';

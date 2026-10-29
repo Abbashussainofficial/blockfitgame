@@ -5,27 +5,27 @@ import 'package:flutter/foundation.dart';
 /// Every ad and in-app purchase identifier lives here, so going live is a
 /// matter of editing this one file (plus the App ID in AndroidManifest.xml).
 ///
-/// The IDs below are Google's official TEST IDs. They always fill and never
-/// pay out, and using them is the only safe way to test: clicking real ads on
-/// your own device can get your AdMob account suspended.
-///
-/// TODO(release): replace every `ca-app-pub-3940256099942544` value with your
-/// own IDs from https://apps.admob.com, and set the same App ID in
-/// android/app/src/main/AndroidManifest.xml
-/// (com.google.android.gms.ads.APPLICATION_ID).
+/// Release builds use the real Block Fit ad units. Debug and profile builds
+/// use Google's official TEST units, which always fill and never pay out:
+/// clicking real ads on your own device can get the AdMob account suspended.
 abstract final class AdConfig {
   /// AdMob App ID (also in AndroidManifest.xml).
-  static const String androidAppId = 'ca-app-pub-3940256099942544~3347511713';
+  static const String androidAppId = 'ca-app-pub-9602784303443487~6212205964';
 
   /// Home screen banner (adaptive).
-  static const String bannerUnitId = 'ca-app-pub-3940256099942544/9214589741';
+  static const String bannerUnitId = kReleaseMode
+      ? 'ca-app-pub-9602784303443487/7178015302'
+      : 'ca-app-pub-3940256099942544/9214589741';
 
   /// Interstitial shown after every [interstitialEveryNGameOvers] game overs.
-  static const String interstitialUnitId =
-      'ca-app-pub-3940256099942544/1033173712';
+  static const String interstitialUnitId = kReleaseMode
+      ? 'ca-app-pub-9602784303443487/6671582999'
+      : 'ca-app-pub-3940256099942544/1033173712';
 
   /// Rewarded ad for Revive and extra Undo.
-  static const String rewardedUnitId = 'ca-app-pub-3940256099942544/5224354917';
+  static const String rewardedUnitId = kReleaseMode
+      ? 'ca-app-pub-9602784303443487/4551851963'
+      : 'ca-app-pub-3940256099942544/5224354917';
 
   static const int interstitialEveryNGameOvers = 3;
 

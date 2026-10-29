@@ -13,3 +13,9 @@
 # generated mapping.txt (build/app/outputs/mapping/release/) with each release.
 -keepattributes SourceFile,LineNumberTable
 -renamesourcefileattribute SourceFile
+
+# WorkManager (pulled in by the AdMob SDK) creates its Room database by
+# reflection at app start. Without these, R8 strips the generated
+# WorkDatabase_Impl constructor and the release build crashes on launch.
+-keep class * extends androidx.room.RoomDatabase { <init>(); }
+-keep class androidx.work.impl.WorkDatabase_Impl { *; }
