@@ -4,12 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/game_theme.dart';
 import '../../core/strings.dart';
 import '../../game/game_controller.dart';
+import '../../services/storage_service.dart';
 import '../providers/theme_provider.dart';
 import '../widgets/banner_ad_widget.dart';
 import '../widgets/common.dart';
 import 'game_screen.dart';
 import 'settings_screen.dart';
 import 'themes_screen.dart';
+import 'tutorial_screen.dart';
 
 /// Main menu: Play / Continue, Themes, Settings and the high score.
 class HomeScreen extends ConsumerWidget {
@@ -22,15 +24,19 @@ class HomeScreen extends ConsumerWidget {
     // A game is resumable if it was started and has not ended.
     final canContinue = !game.isGameOver && game.moveCount > 0;
 
-    void openGame({required bool fresh}) {
-      if (fresh) ref.read(gameControllerProvider.notifier).newGame();
-      Navigator.of(context)
-          .push(MaterialPageRoute<void>(builder: (_) => const GameScreen()));
-    }
-
     void open(Widget screen) =>
         Navigator.of(context)
             .push(MaterialPageRoute<void>(builder: (_) => screen));
+
+    void openGame({required bool fresh}) {
+      // First ever game: teach the basics, then start it from the tutorial.
+      if (fresh && !ref.read(storageServiceProvider).tutorialSeen) {
+        open(const TutorialScreen(startGameWhenDone: true));
+        return;
+      }
+      if (fresh) ref.read(gameControllerProvider.notifier).newGame();
+      open(const GameScreen());
+    }
 
     return ThemedScaffold(
       theme: theme,
@@ -114,6 +120,22 @@ class HomeScreen extends ConsumerWidget {
                           ),
                         ),
                       ],
+                    ),
+                    const SizedBox(height: 4),
+                    TextButton.icon(
+                      onPressed: () => open(const TutorialScreen()),
+                      style: TextButton.styleFrom(
+                        foregroundColor: theme.textSecondary,
+                        minimumSize: const Size.fromHeight(48),
+                      ),
+                      icon: const Icon(Icons.help_outline_rounded),
+                      label: const Text(
+                        AppStrings.howToPlay,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                     ),
                   ],
                 ),

@@ -12,6 +12,33 @@ abstract final class AppStrings {
   static const String themes = 'Themes';
   static const String settings = 'Settings';
   static const String highScore = 'High Score';
+  static const String howToPlay = 'How to Play';
+
+  // Tutorial.
+  static const String skip = 'Skip';
+  static const String next = 'Next';
+  static const String letsPlay = "Let's Play!";
+  static const String gotIt = 'Got it';
+  static String tutorialStep(int step, int of) => 'STEP $step OF $of';
+  static const String tutorialRowTitle = 'Drag the piece onto the board';
+  static const String tutorialRowHint = 'Fill the gap to complete the row.';
+  static const String tutorialRowDone = 'A full row clears and scores points!';
+  static const String tutorialColTitle = 'Columns clear too';
+  static const String tutorialColHint = 'Drop the piece to finish the column.';
+  static const String tutorialColDone = 'Rows and columns both count.';
+  static const String tutorialMultiTitle = 'Clear lines together';
+  static const String tutorialMultiHint =
+      'Finish two rows with one piece for bonus points.';
+  static const String tutorialMultiDone =
+      'Clear on back-to-back turns to build a COMBO!';
+  static const String tutorialWrongSpot = 'Try the highlighted spot.';
+  static const String tutorialReadyTitle = "You're ready!";
+  static const List<String> tutorialTips = [
+    'You get 3 pieces at a time. Place all 3 to get new ones.',
+    "Pieces can't be rotated, so plan where each one fits.",
+    'The game ends when none of your pieces fit. Keep space open!',
+    'Made a mistake? Tap Undo.',
+  ];
 
   // Game screen.
   static const String score = 'SCORE';

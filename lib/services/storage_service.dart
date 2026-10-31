@@ -26,6 +26,7 @@ class StorageService {
   static const String _kVibrationOn = 'vibration_on';
   static const String _kThemeId = 'theme_id';
   static const String _kAdsRemoved = 'ads_removed';
+  static const String _kTutorialSeen = 'tutorial_seen';
 
   // ---- Best score ----------------------------------------------------------
 
@@ -84,6 +85,12 @@ class StorageService {
   String? get themeId => _safe(() => _prefs.getString(_kThemeId), null);
   Future<void> setThemeId(String id) =>
       _write(() => _prefs.setString(_kThemeId, id));
+
+  /// Whether the first-play tutorial has been finished or skipped.
+  bool get tutorialSeen =>
+      _safe(() => _prefs.getBool(_kTutorialSeen), false) ?? false;
+  Future<void> setTutorialSeen() =>
+      _write(() => _prefs.setBool(_kTutorialSeen, true));
 
   // ---- Purchases ---------------------------------------------------------
 

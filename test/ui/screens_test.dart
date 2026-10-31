@@ -25,7 +25,8 @@ Future<(ProviderContainer, StorageService)> _pump(
   tester.view.physicalSize = const Size(1080, 2340);
   tester.view.devicePixelRatio = 3;
   addTearDown(tester.view.reset);
-  SharedPreferences.setMockInitialValues(prefs);
+  // The first-play tutorial has its own tests; skip it everywhere else.
+  SharedPreferences.setMockInitialValues({'tutorial_seen': true, ...prefs});
   final storage = StorageService(await SharedPreferences.getInstance());
   final c = ProviderContainer(
     overrides: [storageServiceProvider.overrideWithValue(storage)],

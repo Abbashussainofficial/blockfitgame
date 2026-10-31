@@ -12,6 +12,7 @@ import '../providers/settings_provider.dart';
 import '../providers/theme_provider.dart';
 import '../widgets/common.dart';
 import 'about_screen.dart';
+import 'tutorial_screen.dart';
 
 /// Sound, vibration, Remove Ads / restore, privacy, links and About.
 class SettingsScreen extends ConsumerStatefulWidget {
@@ -137,6 +138,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           _Section(
             theme: theme,
             children: [
+              _link(
+                theme,
+                icon: Icons.help_rounded,
+                title: AppStrings.howToPlay,
+                trailing: Icons.chevron_right_rounded,
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => const TutorialScreen(),
+                  ),
+                ),
+              ),
               _link(
                 theme,
                 icon: Icons.star_rounded,

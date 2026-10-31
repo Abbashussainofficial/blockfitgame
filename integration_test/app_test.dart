@@ -207,6 +207,7 @@ void main() {
     // Start from a clean install.
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
+    await prefs.setBool('tutorial_seen', true);
 
     // ---- Splash -> Home ---------------------------------------------------
     await app.main();

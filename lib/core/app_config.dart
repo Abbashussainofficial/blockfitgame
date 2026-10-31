@@ -3,7 +3,7 @@ abstract final class AppConfig {
   static const String packageName = 'com.adivantech.blockfit';
 
   /// Keep in sync with `version:` in pubspec.yaml.
-  static const String version = '1.0.0';
+  static const String version = '1.0.1';
 
   static const String contactEmail = 'contact@adivantech.com';
 
